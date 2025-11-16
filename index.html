@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hồ cá vui nhộn - Nâng cao</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="controls">
+        <button id="bg-btn">Đổi cảnh nền</button>
+        <button id="music-btn">Phát nhạc</button>
+    </div>
+
+    <div id="content">
+        
+        <div id="shark">
+            <img src="images/shark.png" alt="Cá mập">
+        </div>
+
+        <div id="turtle">
+            <img src="images/turtle.png" alt="Rùa">
+        </div>
+
+        <div id="diver1">
+            <img src="images/diver1.png" alt="Thợ lặn 1">
+        </div>
+        <div id="diver2">
+            <img src="images/diver2.png" alt="Thợ lặn 2">
+        </div>
+        <div id="diver3">
+            <img src="images/diver3.png" alt="Thợ lặn 3">
+        </div>
+
+        <div id="bubble1" class="bubbles">
+            <img src="images/faintSchool.png" alt="Bong bóng">
+        </div>
+        <div id="bubble2" class="bubbles">
+            <img src="images/faintSchool.png" alt="Bong bóng">
+        </div>
+        <div id="bubble3" class="bubbles">
+            <img src="images/faintSchool.png" alt="Bong bóng">
+        </div>
+
+    </div>
+
+    <audio id="bg-music" src="music/nhacnen.mp3" loop></audio>
+
+<script>
+const bgButton = document.getElementById('bg-btn');
+const musicButton = document.getElementById('music-btn');
+const content = document.getElementById('content');
+const audio = document.getElementById('bg-music');
+
+const backgrounds = [
+    'images/bgi.jpeg',
+    'images/bgi2.avif',
+    'images/bgi3.jpg'
+];
+
+let currentIndex = 0;
+bgButton.addEventListener('click', function() {
+    currentIndex = (currentIndex + 1) % backgrounds.length;
+    content.style.backgroundImage = `url('${backgrounds[currentIndex]}')`;
+});
+
+musicButton.addEventListener('click', function() {
+    if (audio.paused) {
+        audio.play();
+        musicButton.textContent = 'Dừng nhạc';
+    } else {
+        audio.pause();
+        musicButton.textContent = 'Phát nhạc';
+    }
+});
+</script>
+
+</body>
+</html>
